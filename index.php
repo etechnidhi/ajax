@@ -17,7 +17,7 @@
             <label>
                 <button class="button" onclick='theFunction(this)'>GET JSON</button>
                 <button class="button" onclick='theSecondFunction(this)'>GET FROM LOCALSTORAGE</button>
-                <button class="button" onclick='theLastFunction(this)'>SET TO LOCALSTORAGE</button>
+                <!-- <button class="button" onclick='theLastFunction(this)'>SET TO LOCALSTORAGE</button> -->
             </label>
     <br>
             <div class="row">
@@ -69,20 +69,26 @@ function theSecondFunction(x){
     data = localStorage.jsonData;         
 }
 
-function theLastFunction(x){
-    localStorage.setItem('jsonData',$("#result").html());
-}
+$("#result").on('keypress','.value',function(e){
+    if(e. keyCode == 13){
+        alert("hdgfhs");
+        localStorage.setItem('jsonData',$("#result").html());
+    }
+});
+// function theLastFunction(x){
+//     localStorage.setItem('jsonData',$("#result").html());
+// }
 
 $(document).ready(function(){
     $("#result").on('click','.value', function(){
     if($(this).children().eq(0).val()==undefined)
         $(this).html('<input type="text" class="ip" value="'+$(this).text()+'" />');
-    // else
-    //     $(this).html('<input type="text" value="'+$(this).text()+'" />');
     });
-    $("#result").on('focusout','.ip', function(){
+    $("#result").on('keypress','.ip', function(e){
+        if(e.keyCode == 13){
         $(this).parent().html($(this).val());
         // alert($(this).val());
+        }
     });
 });
 </script>            
